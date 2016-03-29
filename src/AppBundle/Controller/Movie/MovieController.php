@@ -1,26 +1,25 @@
 <?php
 
-namespace AppBundle\Controller\Article;
+namespace AppBundle\Controller\Movie;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 /**
  * Created by PhpStorm.
  * User: jessy
  * Date: 29/03/2016
- * Time: 18:10
+ * Time: 20:13
  */
-class ArticleController extends Controller
+class MovieController extends Controller
 {
     /**
      * @Route("/list")
      */
     public function listAction()
     {
-        return new Response('List of article');
+        return new Response('List of movie');
     }
 
     /**
@@ -30,7 +29,7 @@ class ArticleController extends Controller
     {
         $tag = $request->query->get('tag');
 
-        return new Response('Affiche moi l\'article avec l\'id: '.$id.' avec le tag '.$tag
+        return new Response('Affiche moi movie avec l\'id: '.$id.' avec le tag '.$tag
         );
     }
 }
