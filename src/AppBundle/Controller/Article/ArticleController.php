@@ -7,12 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-/**
- * Created by PhpStorm.
- * User: jessy
- * Date: 29/03/2016
- * Time: 18:10
- */
 class ArticleController extends Controller
 {
     /**

@@ -6,12 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * Created by PhpStorm.
- * User: jessy
- * Date: 29/03/2016
- * Time: 20:13
- */
+
 class MovieController extends Controller
 {
     /**
