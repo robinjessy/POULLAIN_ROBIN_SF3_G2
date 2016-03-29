@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,10 +24,13 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/show/{id}")
+     * @Route("/show/{id}", requirements={"id" = "\d+"})
      */
-    public function showAction($id)
+    public function showAction($id, Request $request)
     {
-        return new Response('Affiche moi l\'article avec l\'id: '.$id);
+        $tag = $request->query->get(''),
+
+        return new Response('Affiche moi l\'article avec l\'id: '.$id.' avec le tag '.$tag
+        );
     }
 }

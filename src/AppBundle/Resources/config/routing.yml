@@ -2,3 +2,4 @@ app:
   resource: "@AppBundle/Controller/Article"
   type: annotation
   prefix: /article
+
