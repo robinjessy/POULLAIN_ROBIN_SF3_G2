@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Article - {{ articleName }}</h1>
+    <h1>List d'article</h1>
+    {% include('AppBundle:Article/Partial:list.html.twig') %}
 {% endblock %}
 

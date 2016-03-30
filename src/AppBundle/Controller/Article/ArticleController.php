@@ -29,7 +29,7 @@ class ArticleController extends Controller
             ],
         ];
 
-        return $this->render('AppBundle:Article:list.html.twig', [
+        return $this->render('AppBundle:Article:index.html.twig', [
             'articleList' => $articleList,
         ]);
     }
