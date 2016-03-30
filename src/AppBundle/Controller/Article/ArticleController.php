@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends Controller
 {
     /**
-     * @Route("/list")
+     * @Route("/list", name="_article")
      */
     public function listAction()
     {

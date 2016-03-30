@@ -9,10 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="_welcome")
      */
     public function indexAction()
     {
+        $antispam = $this->get('antispam');
+        dump($antispam->isSpam('sdefgrnirbnotobrtb'));
+        die();
+
         return $this->render('AppBundle:Home:index.html.twig');
     }
 }
