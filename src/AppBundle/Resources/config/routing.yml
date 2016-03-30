@@ -7,3 +7,7 @@ movie:
   resource: "@AppBundle/Controller/Movie"
   type: annotation
   prefix: /movie
+
+home:
+  resource: "@AppBundle/Controller/HomeController.php"
+  type: annotation
