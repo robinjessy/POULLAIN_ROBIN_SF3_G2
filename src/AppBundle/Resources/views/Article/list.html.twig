@@ -1,0 +1,19 @@
+{% extends('::base.html.twig') %}
+
+{% block title %}
+    Article
+{% endblock %}
+
+{% block body %}
+    <h1>Welcome List Article!</h1>
+
+    <ul>
+        {% for name in articleList %}
+            <li>Article list : {{ name.id }} {{ name.name }}</li>
+        {% else %}
+            <li>Pas d'utilisateur trouvé.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
