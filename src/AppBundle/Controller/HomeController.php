@@ -35,8 +35,9 @@ class HomeController extends Controller
 
         $articles = $articleRepository->findAll();
 
-        dump($articles);die;
 
-        return $this->render('AppBundle:Home:index.html.twig');
+        return $this->render('AppBundle:Home:index.html.twig',[
+            'articles' => $articles,
+        ]);
     }
 }
