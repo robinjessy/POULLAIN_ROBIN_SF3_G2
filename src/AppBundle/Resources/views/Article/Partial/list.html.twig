@@ -1,17 +1,19 @@
 {% block body %}
 <h2 style="text-align: center" >Listes des Aricles !</h2>
     <hr>
+    <div class="well">
         {% for name in articles %}
-            <h4>Article {{ name.title }}</h4>
-            <div class="bs-component">
-                <blockquote>
-                    <p>{{ name.content }}</p>
-                    <small>{{ name.author }}</small>
-                </blockquote>
-                <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div></div>
-        {% else %}
-            <li>Pas d'article trouvé.</li>
-        {% endfor %}
+        <h4>Article {{ name.title }}</h4>
+        <div class="bs-component">
+            <blockquote>
+                <p>{{ name.content }}</p>
+                <small>{{ name.author }}</small>
+            </blockquote>
+            {% else %}
+                <li>Pas d'article trouvé.</li>
+            {% endfor %}
+    </div>
+
 
 {% endblock %}
 
