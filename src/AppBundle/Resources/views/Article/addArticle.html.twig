@@ -1,0 +1,22 @@
+{% extends('::base.html.twig') %}
+
+{% block title %}
+    Article
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1 style="text-align: center" > <strong style="color: #3AA1BF; font-size: 60px">Ajouter</strong> <small style="color: #F2385A;"> un </small><b style="color: #F5A503;">Article!</b></h1>
+            <hr>
+            <form class="form-horizontal">
+                {{ form_start(form) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.content, {'attr': {'rows': '10'}}) }}
+                {{ form_row(form.author) }}
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

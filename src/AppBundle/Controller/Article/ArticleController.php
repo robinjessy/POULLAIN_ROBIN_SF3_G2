@@ -1,38 +1,38 @@
 <?php
-
 namespace AppBundle\Controller\Article;
+use AppBundle\Entity\Article\Article;
+use AppBundle\Entity\Article\PostType;
+use AppBundle\Form\addArticle;
+use AppBundle\Form\Type\Article\ArticleType;
+use AppBundle\Form\Type\Article\TagType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
 class ArticleController extends Controller
 {
     /**
-     * @Route("/list", name="_article")
+     * @Route("/add", name="_article")
      */
-    public function listAction()
+    public function newAction(Request $request)
     {
-        $articleList = [
-            [
-                'id' => 2,
-                'name' => 'Symfony2'
-            ],
-            [
-                'id' => 5,
-                'name' => 'Wordpress'
-            ],
-            [
-                'id' => 9,
-                'name' => 'Laravel'
-            ],
-        ];
+        $form = $this->createForm(ArticleType::class);
 
-        return $this->render('AppBundle:Article:index.html.twig', [
-            'articleList' => $articleList,
-        ]);
+        $form->handleRequest($request);
+
+        if($form->isValid()){
+            dump($form->getData());die;
+        }
+
+        return $this->render('AppBundle:Article:addArticle.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
     }
+
 
     /**
      * @Route("/show/{id}", requirements={"id" = "\d+"})
@@ -40,11 +40,9 @@ class ArticleController extends Controller
     public function showAction($id, Request $request)
     {
         $tag = $request->query->get('tag');
-
         return new Response('Affiche moi l\'article avec l\'id: '.$id.' avec le tag '.$tag
         );
     }
-
     /**
      * @Route("/show/{articleName}")
      *
@@ -58,4 +56,28 @@ class ArticleController extends Controller
             'articleName' => $articleName,
         ]);
     }
+
+    public function authorAction()
+    {
+        
+    }
+
+    /**
+     * @Route("/tag/new", name="_tag")
+     */
+    public function newTagAction(Request $request)
+    {
+        $form = $this->createForm(TagType::class);
+
+        $form->handleRequest($request);
+
+        if($form->isValid()){
+            dump($form->getData());die;
+        }
+
+        return $this->render('AppBundle:Article:tag.new.html.twig',[
+            'form'=>$form->createView(),
+        ]);
+    }
+
 }
