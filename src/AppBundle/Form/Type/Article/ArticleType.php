@@ -35,8 +35,4 @@ class ArticleType extends AbstractType
         );
     }
 
-    public function getName()
-    {
-        return 'app_bundle_article_type';
-    }
 }

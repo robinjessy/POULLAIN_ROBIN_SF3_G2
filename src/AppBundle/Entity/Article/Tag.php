@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tag
  *
  * @ORM\Table(name="tag")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Article\TagRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TagRepository")
  */
 class Tag
 {
@@ -36,23 +36,24 @@ class Tag
     private $slug;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="string", length=255)
+     * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAd", type="datetimetz")
+     * @ORM\Column(name="updatedAt", type="datetime")
      */
-    private $updatedAd;
+    private $updatedAt;
 
     public function __construct()
     {
         $this->createdAt = new \DateTime();
     }
+
 
     /**
      * Get id
@@ -115,7 +116,7 @@ class Tag
     /**
      * Set createdAt
      *
-     * @param string $createdAt
+     * @param \DateTime $createdAt
      *
      * @return Tag
      */
@@ -129,7 +130,7 @@ class Tag
     /**
      * Get createdAt
      *
-     * @return string
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -137,27 +138,27 @@ class Tag
     }
 
     /**
-     * Set updatedAd
+     * Set updatedAt
      *
-     * @param \DateTime $updatedAd
+     * @param \DateTime $updatedAt
      *
      * @return Tag
      */
-    public function setUpdatedAd($updatedAd)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->updatedAd = $updatedAd;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get updatedAd
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getUpdatedAd()
+    public function getUpdatedAt()
     {
-        return $this->updatedAd;
+        return $this->updatedAt;
     }
 }
 

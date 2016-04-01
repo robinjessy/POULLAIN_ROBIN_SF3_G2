@@ -20,28 +20,16 @@ class ArticleController extends Controller
      */
     public function newAction(Request $request)
     {
-        $form = $this->createForm(TagType::class);
+        $form = $this->createForm(ArticleType::class);
 
         $form->handleRequest($request);
 
         if($form->isValid()){
             $em = $this->getDoctrine()->getManager();
-
-            /**
-             * @var Tag $tag
-             */
-            $tag = $form->getData();
-
-            // class stringUtil
-            $stringUtil = $this->get('string.util');
-
-            $slug = $stringUtil->slugify($tag->getName());
-            $tag->setSlug($slug);
-
-            $em->persist($tag);
+            $em->persist($form->getData());
             $em->flush();
 
-            return $this->redirectToRoute('_article');
+            return $this->redirectToRoute('_welcome');
         }
 
         return $this->render('AppBundle:Article:addArticle.html.twig', array(
@@ -74,10 +62,6 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function authorAction()
-    {
-        
-    }
 
     public function listAction()
     {
@@ -92,20 +76,53 @@ class ArticleController extends Controller
     }
 
     /**
+     * @Route("/author", name="article_author")
+     */
+    public function authorAction(Request $request)
+    {
+        $author = $request->query->get('author');
+
+
+        $em = $this->getDoctrine()->getManager();
+        $articleRepository = $em->getRepository('AppBundle:Article\Article');
+
+        $articles = $articleRepository->findBy([
+            'author' => $author,
+        ]);
+
+        return $this->render('AppBundle:Article:index.html.twig', [
+            'articles' => $articles,
+        ]);
+    }
+
+    /**
      * @Route("/tag/new", name="_tag")
      */
-    public function newTagAction(Request $request)
+    public function tagAction(Request $request)
     {
         $form = $this->createForm(TagType::class);
 
         $form->handleRequest($request);
 
-        if($form->isValid()){
-            dump($form->getData());die;
+        if ($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+
+            /** @var Tag $slug */
+            $tag = $form->getData();
+
+            $stringUtil = $this->get('string.util');
+
+            $slug = $stringUtil->slugify($tag->getName());
+            $tag->setSlug($slug);
+
+            $em->persist($tag);
+            $em->flush();
+
+            return $this->redirectToRoute('_welcome');
         }
 
-        return $this->render('AppBundle:Article:tag.new.html.twig',[
-            'form'=>$form->createView(),
+        return $this->render('AppBundle:Article:tag.new.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 
