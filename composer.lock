@@ -1893,20 +1893,20 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "4580ae86cde5497d38fc971192cd2c37e546eb4f"
+                "reference": "b097218e4ab7724e7ec0c420e96dfd70518c2354"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/4580ae86cde5497d38fc971192cd2c37e546eb4f",
-                "reference": "4580ae86cde5497d38fc971192cd2c37e546eb4f",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/b097218e4ab7724e7ec0c420e96dfd70518c2354",
+                "reference": "b097218e4ab7724e7ec0c420e96dfd70518c2354",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.3.3"
             },
             "suggest": {
                 "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
@@ -1944,7 +1944,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2016-01-21 09:38:31"
+            "time": "2016-03-23 13:46:08"
         }
     ],
     "aliases": [],

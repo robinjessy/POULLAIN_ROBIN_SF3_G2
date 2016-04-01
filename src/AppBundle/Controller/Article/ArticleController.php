@@ -2,6 +2,7 @@
 namespace AppBundle\Controller\Article;
 use AppBundle\Entity\Article\Article;
 use AppBundle\Entity\Article\PostType;
+use AppBundle\Entity\Article\Tag;
 use AppBundle\Form\addArticle;
 use AppBundle\Form\Type\Article\ArticleType;
 use AppBundle\Form\Type\Article\TagType;
@@ -19,12 +20,28 @@ class ArticleController extends Controller
      */
     public function newAction(Request $request)
     {
-        $form = $this->createForm(ArticleType::class);
+        $form = $this->createForm(TagType::class);
 
         $form->handleRequest($request);
 
         if($form->isValid()){
-            dump($form->getData());die;
+            $em = $this->getDoctrine()->getManager();
+
+            /**
+             * @var Tag $tag
+             */
+            $tag = $form->getData();
+
+            // class stringUtil
+            $stringUtil = $this->get('string.util');
+
+            $slug = $stringUtil->slugify($tag->getName());
+            $tag->setSlug($slug);
+
+            $em->persist($tag);
+            $em->flush();
+
+            return $this->redirectToRoute('_article');
         }
 
         return $this->render('AppBundle:Article:addArticle.html.twig', array(
@@ -60,6 +77,18 @@ class ArticleController extends Controller
     public function authorAction()
     {
         
+    }
+
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $articleRepository = $em->getRepository('AppBundle:Article\Article');
+
+        $articles = $articleRepository->findAll();
+
+        return $this-> render('AppBundle:Article:index.html.twig', [
+            'articles' => $articles,
+        ]);
     }
 
     /**
