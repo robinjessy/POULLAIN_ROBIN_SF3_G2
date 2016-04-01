@@ -24,10 +24,10 @@ class ArticleController extends Controller
         $article = new Article();
 
         $form = $this->createFormBuilder($article)
-            ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
-            ->add('author', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Sauvegarder'))
+            ->add('title', TextType::class, array('label' => 'Titre'))
+            ->add('content', TextareaType::class, array('label' => 'Article'))
+            ->add('author', TextType::class, array('label' => 'Auteur'))
+            ->add('save', SubmitType::class, array('label' => 'Sauvegarder', 'attr' => array('class'=>'btn btn-primary')))
             ->getForm();
 
         $form->handleRequest($request);
