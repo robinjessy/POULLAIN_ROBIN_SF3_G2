@@ -1,0 +1,19 @@
+{% extends('::base.html.twig') %}
+
+{% block title %}
+    Article
+{% endblock %}
+
+{% block body %}
+    <h1>Ajout d'article</h1>
+<div class="form-group">
+    {{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.author) }}
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+
+
