@@ -1,9 +1,9 @@
 {% block body %}
 <h2 style="text-align: center" > <strong style="color:#F2385A; font-size: 60px">Listes</strong> <small style="color: #3AA1BF;"> Des </small><b style="color: #56D9CD;">Article!</b></h2>
     <hr>
-    <div class="well">
+    <div>
         {% for name in articles %}
-        <h4>Article {{ name.title }}</h4>
+        <h4>{{ name.title }}</h4>
         <div class="bs-component">
             <blockquote>
                 <p>{{ name.content }}</p>
