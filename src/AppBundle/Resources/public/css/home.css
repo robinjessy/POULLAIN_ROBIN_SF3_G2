@@ -25,6 +25,14 @@ body {
     font-size: 1em;
     font-family: 'Raleway', Arial, sans-serif;
 }
+
+h4{
+    color: #3AA1BF!important;
+}
+
+blockquote footer, blockquote small, blockquote .small {
+    color: #F34F6D!important;
+}
 .text {
     fill: none;
     stroke-width: 3;
