@@ -8,6 +8,7 @@
             <blockquote>
                 <p>{{ name.content }}</p>
                 <small><a href="{{ path('article_author', {'author': name.author} ) }}">{{ name.author }}</a></small>
+                <small><a href="">{{ name.tag }}</a></small>
             </blockquote>
             {% else %}
                 <li>Pas d'article trouvé.</li>

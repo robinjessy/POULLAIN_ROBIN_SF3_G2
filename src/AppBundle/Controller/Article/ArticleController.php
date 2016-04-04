@@ -6,6 +6,7 @@ use AppBundle\Entity\Article\Tag;
 use AppBundle\Form\addArticle;
 use AppBundle\Form\Type\Article\ArticleType;
 use AppBundle\Form\Type\Article\TagType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -68,13 +69,11 @@ class ArticleController extends Controller
     /**
      * @Route("/author/{author}", name="article_author")
      */
-    public function authorAction(Request $request)
+    public function authorAction(Request $request, $author)
     {
-        $author = $request->query->get('author');
+        $manager = $this->getDoctrine()->getManager();
 
-
-        $em = $this->getDoctrine()->getManager();
-        $articleRepository = $em->getRepository('AppBundle:Article\Article');
+        $articleRepository = $manager->getRepository('AppBundle:Article\Article');
 
         $articles = $articleRepository->findBy([
             'author' => $author,
@@ -84,6 +83,8 @@ class ArticleController extends Controller
             'articles' => $articles,
         ]);
     }
+
+
 
     /**
      * @Route("/tag/new", name="_tag")

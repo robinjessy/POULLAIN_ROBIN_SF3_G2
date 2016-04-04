@@ -1,20 +1,21 @@
 {% extends('::base.html.twig') %}
 
 {% block title %}
-    List article Auteur
+    List article par tag
 {% endblock %}
 
 {% block body %}
-        {% for article in articles %}
-    <h2 style="text-align: center" > <strong style="color:#F2385A; font-size: 60px">Article</strong> <small style="color: #3AA1BF;"> de </small><b style="color: #56D9CD;">{{ article.author }} n°{{ article.id }}!</b></h2>
+    <h2 style="text-align: center" > <strong style="color:#F2385A; font-size: 60px">Listes</strong> <small style="color: #3AA1BF;"> Des </small><b style="color: #56D9CD;">Article par tag!</b></h2>
     <hr>
     <div>
 
+    {% for article in articles %}
     <h4><a href="">{{ article.title }}</a></h4>
     <div class="bs-component">
         <blockquote>
             <p>{{ article.content }}</p>
             <small><a href="{{ path('article_author', {'author': article.author} ) }}">{{ article.author }}</a></small>
+
         </blockquote>
         {% else %}
             <li>Pas d'article trouvé.</li>

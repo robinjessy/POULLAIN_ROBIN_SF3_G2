@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-<h2 style="text-align: center" > <strong style="color:#F2385A; font-size: 60px">Listes</strong> <small style="color: #3AA1BF;"> Des </small><b style="color: #56D9CD;">Article!</b></h2>
+<h2 style="text-align: center" > <strong style="color:#F2385A; font-size: 60px"></strong> <small style="color: #3AA1BF;"> </small><b style="color: #56D9CD;">Article n°{{ article.id }}</b></h2>
 <hr>
 <div>
     <h4>{{ article.title }}</h4>
@@ -13,6 +13,7 @@
         <blockquote>
             <p>{{ article.content }}</p>
             <small>{{ article.author }}</small>
+            <small>{{ article.tag }}</small>
         </blockquote>
     </div>
 {% endblock %}
