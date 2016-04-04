@@ -14,22 +14,8 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        /*$antispam = $this->get('antispam');
-        dump($antispam->isSpam('sdefgrnirbnotobrtb'));
-        die();*/
 
         $manager = $this->getDoctrine()->getManager();
-//
-//        $artcile = new Article();
-//        $artcile
-//            ->setTitle('Tire Article')
-//            ->setContent('Le contenu de mon premier article')
-//            ->setAuthor('John Fifi')
-//            ->setTag('osef')
-//        ;
-//
-//        $manager->persist($artcile);
-//        $manager->flush();
 
         $articleRepository = $manager->getRepository('AppBundle:Article\Article');
 
@@ -40,4 +26,20 @@ class HomeController extends Controller
             'articles' => $articles,
         ]);
     }
+
+    /**
+     * @Route("/show/{id}", requirements={"id" = "\d+"}, name="_show")
+     */
+    public function showAction($id)
+    {
+        $article = $this->getDoctrine()
+            ->getRepository('AppBundle:Article\Article')
+            ->find($id);
+
+        return $this->render('AppBundle:Home:show.html.twig',[
+            'article' => $article,
+        ]);
+    }
+
+
 }

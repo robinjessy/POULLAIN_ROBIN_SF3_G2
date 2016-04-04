@@ -38,16 +38,6 @@ class ArticleController extends Controller
 
     }
 
-
-    /**
-     * @Route("/show/{id}", requirements={"id" = "\d+"})
-     */
-    public function showAction($id, Request $request)
-    {
-        $tag = $request->query->get('tag');
-        return new Response('Affiche moi l\'article avec l\'id: '.$id.' avec le tag '.$tag
-        );
-    }
     /**
      * @Route("/show/{articleName}")
      *
@@ -76,7 +66,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/author", name="article_author")
+     * @Route("/author/{author}", name="article_author")
      */
     public function authorAction(Request $request)
     {
@@ -90,7 +80,7 @@ class ArticleController extends Controller
             'author' => $author,
         ]);
 
-        return $this->render('AppBundle:Article:index.html.twig', [
+        return $this->render('AppBundle:Article:author.html.twig', [
             'articles' => $articles,
         ]);
     }

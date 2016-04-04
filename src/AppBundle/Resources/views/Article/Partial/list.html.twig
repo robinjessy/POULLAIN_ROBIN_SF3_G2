@@ -3,11 +3,11 @@
     <hr>
     <div>
         {% for name in articles %}
-        <h4>{{ name.title }}</h4>
+        <h4><a href="{{ path('_show', {'id': name.id} ) }}">{{ name.title }}</a></h4>
         <div class="bs-component">
             <blockquote>
                 <p>{{ name.content }}</p>
-                <small>{{ name.author }}</small>
+                <small><a href="{{ path('article_author', {'author': name.author} ) }}">{{ name.author }}</a></small>
             </blockquote>
             {% else %}
                 <li>Pas d'article trouvé.</li>
@@ -16,5 +16,3 @@
 
 
 {% endblock %}
-
-
